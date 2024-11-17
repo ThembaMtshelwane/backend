@@ -35,6 +35,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
+
 // Define routes
 app.use("/api/users", userRoutes);
 app.use("/api/tweets", tweetRoutes);
