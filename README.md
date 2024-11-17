@@ -20,13 +20,13 @@ This is the backend for the social media app, built using Node.js, Express, and 
   - Model-View-Controller (MVC)
     - **Model**: Mongoose models for handling data
     - **Controller**: Logic for processing requests
-    - **(View/Frontend)[https://views-opal.vercel.app/]**: Managed by the frontend (React) 
+    - **[View/Frontend](https://views-opal.vercel.app/)**: Managed by the frontend (React) 
 
 
 ### API Endpoints
 
 Below are the key API endpoints for the backend:
-The base URL : https://backend-iota-ashy.vercel.app
+The base URL: https://backend-iota-ashy.vercel.app
 
 #### Tweets
 
