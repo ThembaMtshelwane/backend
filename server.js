@@ -13,7 +13,7 @@ const app = express();
 const __dirname = path.resolve();
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL || "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://views-opal.vercel.app/"],
   methods: "GET,POST,PUT,DELETE,PATCH",
   allowedHeaders: "Content-Type,Authorization",
   credentials: true,
