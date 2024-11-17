@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 9000;
 const __dirname = path.resolve();
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: process.env.CLIENT_URL || "http://localhost:3000",
   methods: "GET,POST,PUT,DELETE,PATCH",
   allowedHeaders: "Content-Type,Authorization",
   credentials: true,
@@ -25,8 +25,11 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use("/api/users", userRoutes);
 app.use("/api/tweets", tweetRoutes);
 
+connectDB();
 
 app.listen(PORT, () => {
   connectDB();
   console.log(`Server started at http://localhost:${PORT}`);
 });
+
+export default app;
