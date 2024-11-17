@@ -1,6 +1,6 @@
 # Social Media App Backend (Node.js + Express + MongoDB)
 
-This is the backend for the social media app, built using Node.js, Express, and MongoDB. It follows the MVC (Model-View-Controller) architecture, where the "View" is handled by the (frontend)[https://views-opal.vercel.app/]. The backend provides CRUD operations for managing tweets, comments, and user profiles.
+This is the backend for the social media app, built using Node.js, Express, and MongoDB. It follows the MVC (Model-View-Controller) architecture, where the "View" is handled by the [frontend](https://views-opal.vercel.app/). The backend provides CRUD operations for managing tweets, comments, and user profiles.
 
 ## Live Server at 
 
