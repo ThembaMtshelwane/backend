@@ -5,7 +5,6 @@ import path from "path";
 import { connectDB } from "./config/db.js";
 import userRoutes from "./routes/user.route.js";
 import tweetRoutes from "./routes/tweet.route.js";
-import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 dotenv.config();
 
 const app = express();
@@ -25,8 +24,8 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 app.use("/api/users", userRoutes);
 app.use("/api/tweets", tweetRoutes);
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
 
 (async () => {
   try {

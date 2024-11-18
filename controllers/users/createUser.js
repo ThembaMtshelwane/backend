@@ -1,13 +1,9 @@
 import { UserModel } from "../../models/user.model.js";
-import asyncHandler from "express-async-handler";
 import generateToken from "../../utils/generateToken.js";
 
 // @desc Register new user
 // route POST /api/users/
 // @access Public
-const registerUser = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "User registered" });
-});
 const createUser = async (req, res) => {
   const user = req.body;
   const { firstName, lastName, email, username, DOB, password } = req.body;
