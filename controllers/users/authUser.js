@@ -7,8 +7,6 @@ import generateToken from "../../utils/generateToken.js";
 // @access Public
 const authUser = async (req, res) => {
   const { email, password } = req.body;
-  console.log("email ", email);
-  console.log("password ", password);
 
   const user = await UserModel.findOne({ email });
   if (user && (await user.matchPassword(password))) {
