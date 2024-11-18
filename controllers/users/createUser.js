@@ -1,18 +1,37 @@
 import { UserModel } from "../../models/user.model.js";
+import asyncHandler from "express-async-handler";
+import generateToken from "../../utils/generateToken.js";
 
+// @desc Register new user
+// route POST /api/users/
+// @access Public
+const registerUser = asyncHandler(async (req, res) => {
+  res.status(200).json({ message: "User registered" });
+});
 const createUser = async (req, res) => {
   const user = req.body;
+  const { firstName, lastName, email, username, DOB, password } = req.body;
 
-  if (!user.username) {
+  if (!username && !lastName && !DOB && !email && !firstName && !password) {
     return res.status(400).json({
       success: false,
       message: "Please provide all fields",
     });
   }
+
+  const userExists = await UserModel.findOne({ email });
+  if (userExists) {
+    return res.status(404).json({
+      success: false,
+      message: "User email already exists",
+    });
+  }
+
   const newUser = new UserModel(user);
 
   try {
-    await newUser.save();
+    const user = await newUser.save();
+    generateToken(res, user._id);
     res.status(201).json({
       success: true,
       message: "New user successfully added",

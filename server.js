@@ -2,15 +2,15 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import path from "path";
-import { connectDB } from "./config/db.js"; // Updated import
+import { connectDB } from "./config/db.js";
 import userRoutes from "./routes/user.route.js";
 import tweetRoutes from "./routes/tweet.route.js";
-
-// Load environment variables
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 dotenv.config();
 
 const app = express();
 const __dirname = path.resolve();
+const PORT = process.env.PORT || 9000;
 
 const corsOptions = {
   origin: ["http://localhost:3000", "https://views-opal.vercel.app"],
@@ -19,16 +19,15 @@ const corsOptions = {
   credentials: true,
 };
 
-// Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-// Routes
 app.use("/api/users", userRoutes);
 app.use("/api/tweets", tweetRoutes);
+app.use(notFound);
+app.use(errorHandler);
 
-// Connect to MongoDB
 (async () => {
   try {
     await connectDB();
@@ -38,5 +37,7 @@ app.use("/api/tweets", tweetRoutes);
   }
 })();
 
-// Export app for Vercel compatibility
+app.listen(PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}`)
+);
 export default app;
