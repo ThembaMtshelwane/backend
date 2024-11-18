@@ -5,8 +5,10 @@ import generateToken from "../../utils/generateToken.js";
 // @desc Auth user/set token
 // route POST /api/users/auth
 // @access Public
-const authUser = asyncHandler(async (req, res) => {
+const authUser = async (req, res) => {
   const { email, password } = req.body;
+  console.log("email ", email);
+  console.log("password ", password);
 
   const user = await UserModel.findOne({ email });
   if (user && (await user.matchPassword(password))) {
@@ -21,7 +23,7 @@ const authUser = asyncHandler(async (req, res) => {
       message: "Invalid email or password",
     });
   }
-});
+};
 
 // @desc Logout user
 // route PUT /api/users/logout
