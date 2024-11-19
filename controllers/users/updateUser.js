@@ -8,7 +8,7 @@ const updateUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({
       success: false,
-      message: "User not found",
+      message: "User profile not found",
     });
   }
 
@@ -21,10 +21,9 @@ const updateUser = async (req, res) => {
       data: updatedUser,
     });
   } catch (error) {
-    console.error(`Error: ${error.message}`);
     res.status(500).json({
       success: false,
-      message: "Server Error",
+      message: "User profile not updated",
     });
   }
 };
