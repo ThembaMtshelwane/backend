@@ -12,6 +12,7 @@ const authUser = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "User successfully authenticated",
+      data: user._id,
     });
   } else {
     res.status(401).json({
@@ -43,6 +44,5 @@ const getUserProfile = async (req, res) => {
     res.status(404).json({ success: false, message: "User profile not found" });
   }
 };
-
 
 export { authUser, logoutUser, getUserProfile };
