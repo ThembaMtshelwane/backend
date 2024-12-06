@@ -17,9 +17,10 @@ const createUser = async (req, res) => {
 
   const userExists = await UserModel.findOne({ email });
   if (userExists) {
-    return res.status(404).json({
+    return res.status(401).json({
       success: false,
       message: "User email already exists",
+      data: null,
     });
   }
 
@@ -31,12 +32,14 @@ const createUser = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "New user successfully added",
+      data: user,
     });
   } catch (error) {
     console.error("Error in signup new user", error.message);
     res.status(500).json({
       success: false,
       message: "Server Error",
+      data: null,
     });
   }
 };

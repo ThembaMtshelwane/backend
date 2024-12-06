@@ -12,7 +12,7 @@ const authUser = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "User successfully authenticated",
-      data: user._id,
+      data: user,
     });
   } else {
     res.status(401).json({

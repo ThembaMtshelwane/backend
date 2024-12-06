@@ -17,6 +17,7 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
+router.post("/register", createUser); // register
 router.post("/auth", authUser); // login
 router.post("/logout", logoutUser);
 
@@ -24,7 +25,6 @@ router.get("/profile", protect, getUserProfile); // get a user profile/user
 router.put("/profile", protect, updateUser); // update user profile
 router.delete("/profile", protect, deleteUser); // delete user profile
 
-router.post("/", createUser); // register a user
 router.get("/", readAllUsers);
 router.get("/:id", readUser); // get a user profile/user
 
